@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <script src="js/bootstrap.min.js"></script>
+    <title>Document</title>
+    <script>
+        var mainPrice = 0;
+        var count = 1;
+        var addedItem = [];
+
+        function addMe(cardName) {
+            console.log("inside add Me : " + cardName);
+            var name = "n" + cardName;
+            var price = "p" + cardName;
+            var qty = "txt" + cardName;
+            console.log('addedItem.indexOf(name) : ' + addedItem.indexOf(name))
+            if (addedItem.indexOf(name) == -1) {
+                addedItem.push(name)
+                var addItem = true;
+            } else {
+                // remove id 
+                document.getElementById(name).innerHTML = "";
+                var addItem = false;
+            }
+
+            console.log("name ID : " + name);
+            console.log("price ID : " + price);
+            console.log("qty ID : " + qty);
+
+
+            if (addItem) {
+                // Read Name value
+                var nameValue = document.getElementById(name).textContent;
+                var priceValue = document.getElementById(price).textContent;
+                var qtyValue = document.getElementById(qty).value;
+                var calculatedPrice = priceValue * qtyValue;
+
+                mainPrice = mainPrice + calculatedPrice;
+                console.log("qtyValue : " + qtyValue);
+                console.log("calculatedPrice : " + calculatedPrice);
+                // alert("Total Amount is :" + mainPrice);
+                document.getElementById('mainPrice').innerHTML = mainPrice;
+
+                var newHTML = '<div class="row" id="' + name + '"> \
+                                <div class = "col-1"> ' + count + ' </div> \
+                                <div class = "col-2" > ' + nameValue + ' </div> \
+                                <div class = "col-1"> ' + priceValue + ' </div> \
+                                <div class = "col-1"> ' + qtyValue + ' </div> \
+                                <div class = "col-1">' + calculatedPrice + ' </div> \
+                            </div>';
+
+                count = count + 1;
+
+                var oldValue = document.getElementById('s1').innerHTML;
+
+                document.getElementById('s1').innerHTML = oldValue + newHTML;
+
+                // document.getElementById('s1').innerHTML = newHTML;
+
+            }
+            document.getElementById('s1').onclick = function() {
+                alert("Total Amount is :" + mainPrice);
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <div class="container m-2">
+        <div class="row">
+            <div class="card col-3 border-dark ">
+                <input type="checkbox" class="align-self-center m-1" id="ch1" name="chk" onclick="addMe('1')">
+                <img src="pink-flower.jpg" class="card-img-top">
+                <div class="card-body">
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-6">
+                                <label>Name</label>
+                            </div>
+                            <div class="col-6">
+                                <label id="n1">Item 1</label>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-6">
+                                <label>Description</label>
+                            </div>
+                            <div class="col-6">
+                                <label>Item 1</label>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-6">
+                                <label>Price</label>
+                            </div>
+                            <div class="col-6">
+                                <label id="p1">100</label>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-6">
+                                Qty
+                            </div>
+                            <div class="col-6">
+                                <input type="text form-control" class="form-control" id="txt1">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card col-3 border-dark ">
+                <input type="checkbox" class="align-self-center m-1" id="ch2" onclick="addMe('2')" name="chk">
+                <img src="pink-flower.jpg" class="card-img-top">
+                <div class="card-body">
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-6">
+                                <label>Name</label>
+                            </div>
+                            <div class="col-6">
+                                <label id="n2">Item 2</label>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-6">
+                                <label>Description</label>
+                            </div>
+                            <div class="col-6">
+                                <label>Item 2</label>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-6">
+                                <label>Price</label>
+                            </div>
+                            <div class="col-6">
+                                <label id="p2">100</label>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-6">
+                                Qty
+                            </div>
+                            <div class="col-6">
+                                <input type="text form-control" class="form-control" id="txt2">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card col-3 border-dark">
+                <input type="checkbox" class="align-self-center m-1" id="ch3" name="chk" onclick="addMe('3')">
+                <img src="pink-flower.jpg" class="card-img-top">
+                <div class="card-body">
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-6">
+                                <label>Name</label>
+                            </div>
+                            <div class="col-6">
+                                <label id="n3">Item 3</label>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-6">
+                                <label>Description</label>
+                            </div>
+                            <div class="col-6">
+                                <label>Item 1</label>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-6">
+                                <label>Price</label>
+                            </div>
+                            <div class="col-6">
+                                <label id="p3">100</label>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-6">
+                                Qty
+                            </div>
+                            <div class="col-6">
+                                <input type="text form-control" class="form-control" id="txt3">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card col-3 border-dark">
+                <input type="checkbox" class="align-self-center m-1" id="ch4" name="chk" onclick="addMe('4')">
+                <img src="pink-flower.jpg" class="card-img-top">
+                <div class="card-body">
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-6">
+                                <label>Name</label>
+                            </div>
+                            <div class="col-6">
+                                <label id="n4">Item 4</label>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-6">
+                                <label>Description</label>
+                            </div>
+                            <div class="col-6">
+                                <label>Item 1</label>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-6">
+                                <label>Price</label>
+                            </div>
+                            <div class="col-6">
+                                <label id="p4">100</label>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-6">
+                                Qty
+                            </div>
+                            <div class="col-6">
+                                <input type="text form-control" class="form-control" id="txt4">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="card col-3 border-dark ">
+                <input type="checkbox" class="align-self-center m-1" id="ch5" name="chk" onclick="addMe('5')">
+                <img src="pink-flower.jpg" class="card-img-top">
+                <div class="card-body">
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-6">
+                                <label>Name</label>
+                            </div>
+                            <div class="col-6">
+                                <label id="n5">Item 1</label>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-6">
+                                <label>Description</label>
+                            </div>
+                            <div class="col-6">
+                                <label>Item 1</label>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-6">
+                                <label>Price</label>
+                            </div>
+                            <div class="col-6">
+                                <label id="p5">100</label>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-6">
+                                Qty
+                            </div>
+                            <div class="col-6">
+                                <input type="text form-control" class="form-control" id="txt5">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="card col-3 border-dark">
+                <input type="checkbox" class="align-self-center m-1" id="ch6" name="chk" onclick="addMe('6')">
+                <img src="pink-flower.jpg" class="card-img-top">
+                <div class="card-body">
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-6">
+                                <label>Name</label>
+                            </div>
+                            <div class="col-6">
+                                <label id="n6">Item 1</label>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-6">
+                                <label>Description</label>
+                            </div>
+                            <div class="col-6">
+                                <label>Item 1</label>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-6">
+                                <label>Price</label>
+                            </div>
+                            <div class="col-6">
+                                <label id="p6">100</label>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-6">
+                                Qty
+                            </div>
+                            <div class="col-6">
+                                <input type="text form-control" class="form-control" id="txt6">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card col-3 border-dark">
+                <input type="checkbox" class="align-self-center m-1" id="ch7" name="chk" onclick="addMe('7')">
+                <img src="pink-flower.jpg" class="card-img-top">
+                <div class="card-body">
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-6">
+                                <label>Name</label>
+                            </div>
+                            <div class="col-6">
+                                <label id="n7">Item 1</label>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-6">
+                                <label>Description</label>
+                            </div>
+                            <div class="col-6">
+                                <label>Item 1</label>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-6">
+                                <label>Price</label>
+                            </div>
+                            <div class="col-6">
+                                <label id="p7">100</label>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-6">
+                                Qty
+                            </div>
+                            <div class="col-6">
+                                <input type="text form-control" class="form-control" id="txt7">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card col-3 border-dark">
+                <input type="checkbox" class="align-self-center m-1" id="ch8" name="chk" onclick="addMe('8')">
+                <img src="pink-flower.jpg" class="card-img-top">
+                <div class="card-body">
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-6">
+                                <label>Name</label>
+                            </div>
+                            <div class="col-6">
+                                <label id="n8">Item 1</label>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-6">
+                                <label>Description</label>
+                            </div>
+                            <div class="col-6">
+                                <label>Item 1</label>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-6">
+                                <label>Price</label>
+                            </div>
+                            <div class="col-6">
+                                <label id="p8">100</label>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-6">
+                                Qty
+                            </div>
+                            <div class="col-6">
+                                <input type="text form-control" class="form-control" id="txt8">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <h5>Ordered Item</h3>
+                <span id="s1">
+            </span>
+                <span id="mainPrice"></span>
+        </div>
+        <input type="button" value="Display Total Amount for Shoping" onclick="totalAmount()">
+
+</body>
+
+</html>
